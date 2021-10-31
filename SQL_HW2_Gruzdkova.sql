@@ -38,11 +38,7 @@ select * from salary;
 create table employee_salary (
 id serial  primary key,
 employee_id int not null unique,
-salary_id int not null,
-foreign key (employee_id)
-references employees (id),
-foreign key (salary_id )
-references salary (id)
+salary_id int not null
 );
 insert into employee_salary (id, employee_id, salary_id)
 values (default, 25, 14);

@@ -21,7 +21,7 @@ right join salary
 on employee_salary.salary_id = salary.id
 where employee_name is null;
 
--- 4. Âûâåñòè âñå çàðïëàòíûå ïîçèöèè  ìåíüøå 2000 íî ðàáîòíèê ïî íèì íå íàçíà÷åí. (ÇÏ åñòü, íî íå ïîíÿòíî êòî å¸ ïîëó÷àåò.)
+-- 4. Вывести все зарплатные позиции, но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.)
 select salary.monthly_salary 
 from employees right join employee_salary 
 on employee_salary.employee_id = employees.id
@@ -29,7 +29,7 @@ right join salary
 on employee_salary.salary_id = salary.id
 where employee_name is null and salary.monthly_salary < 2000;
 
---5. Íàéòè âñåõ ðàáîòíèêîâ êîìó íå íà÷èñëåíà ÇÏ.
+--5.Найти всех работников кому не начислена ЗП.
 select employees.employee_name, salary.monthly_salary 
 from employees left join employee_salary 
 on employee_salary.employee_id = employees.id
@@ -37,14 +37,14 @@ left join salary
 on employee_salary.salary_id = salary.id
 where salary.monthly_salary is null;
 
--- 6. Âûâåñòè âñåõ ðàáîòíèêîâ ñ íàçâàíèÿìè èõ äîëæíîñòè.
+-- 6. Вывести всех работников с названиями их должности.
 select employees.employee_name, roles.role_name 
 from roles_employee join employees 
 on roles_employee.employee_id = employees.id
 join roles 
 on roles_employee.role_id = roles.id;
 
--- 7. Âûâåñòè èìåíà è äîëæíîñòü òîëüêî Java ðàçðàáîò÷èêîâ.
+-- 7. Вывести имена и должность только Java разработчиков.
 select employees.employee_name, roles.role_name 
 from roles_employee join employees 
 on roles_employee.employee_id = employees.id
@@ -52,7 +52,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Java developer%';
 
--- 8. Âûâåñòè èìåíà è äîëæíîñòü òîëüêî Python ðàçðàáîò÷èêîâ.
+-- 8. Вывести имена и должность только Python разработчиков.
 select employees.employee_name, roles.role_name 
 from roles_employee join employees 
 on roles_employee.employee_id = employees.id
@@ -60,7 +60,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Python developer%';
 
--- 9. Âûâåñòè èìåíà è äîëæíîñòü âñåõ QA èíæåíåðîâ.
+-- 9.  Вывести имена и должность всех QA инженеров.
 select employees.employee_name, roles.role_name 
 from roles_employee join employees 
 on roles_employee.employee_id = employees.id
@@ -68,7 +68,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%QA engineer%';
 
--- 10. Âûâåñòè èìåíà è äîëæíîñòü ðó÷íûõ QA èíæåíåðîâ.
+-- 10. Вывести имена и должность ручных QA инженеров.
 select employees.employee_name, roles.role_name 
 from roles_employee join employees
 on roles_employee.employee_id = employees.id
@@ -76,7 +76,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Manual QA engineer%';
 
--- 11. Âûâåñòè èìåíà è äîëæíîñòü àâòîìàòèçàòîðîâ QA
+-- 11.  Вывести имена и должность автоматизаторов QA
 select employees.employee_name, roles.role_name 
 from roles_employee join employees
 on roles_employee.employee_id = employees.id
@@ -84,7 +84,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Automation QA engineer%';
 
--- 12. Âûâåñòè èìåíà è çàðïëàòû Junior ñïåöèàëèñòîâ
+-- 12. Вывести имена и зарплаты Junior специалистов
 select employees.employee_name, salary.monthly_salary, roles.role_name 
 from employees join employee_salary
 on employees.id = employee_salary.employee_id 
@@ -96,7 +96,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Junior%';
 
--- 13. Âûâåñòè èìåíà è çàðïëàòû Middle ñïåöèàëèñòîâ
+-- 13. Вывести имена и зарплаты Middle специалистов
 select employees.employee_name, salary.monthly_salary, roles.role_name 
 from employees join employee_salary
 on employees.id = employee_salary.employee_id 
@@ -108,7 +108,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Middle%';
 
--- 14. Âûâåñòè èìåíà è çàðïëàòû Senior ñïåöèàëèñòîâ
+-- 14. Вывести имена и зарплаты Senior специалистов
 select employees.employee_name, salary.monthly_salary, roles.role_name 
 from employees join employee_salary
 on employees.id = employee_salary.employee_id 
@@ -120,7 +120,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like 'Senior%';
 
--- 15. Âûâåñòè çàðïëàòû Java ðàçðàáîò÷èêîâ
+-- 15. Вывести зарплаты Java разработчиков
 select salary.monthly_salary, roles.role_name 
 from employees join employee_salary
 on employees.id = employee_salary.employee_id 
@@ -132,7 +132,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Java developer%';
 
--- 16. Âûâåñòè çàðïëàòû Python ðàçðàáîò÷èêîâ
+-- 16. Вывести зарплаты Python разработчиков
 select salary.monthly_salary, roles.role_name 
 from employees join employee_salary
 on employees.id = employee_salary.employee_id 
@@ -144,7 +144,7 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Python developer%';
 
--- 17. Âûâåñòè èìåíà è çàðïëàòû Junior Python ðàçðàáîò÷èêîâ
+-- 17. Вывести имена и зарплаты Junior Python разработчиков
 select employees.employee_name, salary.monthly_salary, roles.role_name 
 from employees join employee_salary
 on employees.id = employee_salary.employee_id 

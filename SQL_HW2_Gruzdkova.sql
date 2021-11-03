@@ -30,6 +30,8 @@ insert into salary (id, monthly_salary)
 values (default, 1200);
 insert into salary (id, monthly_salary)
 values (default, 2400);
+
+select * from salary;
 --=====================================================
 --Создать таблицу employee_salary
 --- id. Serial  primary key,

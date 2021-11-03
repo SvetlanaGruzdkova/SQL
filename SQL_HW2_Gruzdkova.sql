@@ -10,6 +10,7 @@ employee_name varchar (50) not null
 );
 insert into employees (id, employee_name)
 values (default, 'Natasha Zagoryanskaya');
+
 select * from employees;
 --====================================================
 --Создать таблицу salary
@@ -19,14 +20,16 @@ select * from employees;
 
 create table salary (
 id serial primary key,
-monthly_salary varchar (30) not null
-);
-alter table salary
-alter column salary type int
-using salary::integer;
-insert into salary(id, monthly_salary)
+monthly_salary int not null
+); 
+insert into salary (id, monthly_salary)
+values (default, 1000);
+insert into salary (id, monthly_salary)
+values (default, 1100);
+insert into salary (id, monthly_salary)
+values (default, 1200);
+insert into salary (id, monthly_salary)
 values (default, 2400);
-select * from salary;
 --=====================================================
 --Создать таблицу employee_salary
 --- id. Serial  primary key,
@@ -52,14 +55,13 @@ select * from employee_salary;
 --Поменять тип столба role_name с int на varchar(30)
 --Наполнить таблицу roles 20 строками:
 
-
 create table roles (
 id serial primary key,
 role_name int not null unique
 );
 alter table roles
 alter column role_name type varchar(30)
-using role_name::integer;
+using role_name::varchar;
 insert into roles (id, role_name)
 values (default, 'Senior Automation QA engineer');
 select * from roles;

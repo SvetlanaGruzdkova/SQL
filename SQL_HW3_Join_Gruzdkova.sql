@@ -1,5 +1,5 @@
---1.  Вывести всех работников чьи зарплаты есть в базе, вместе с зарплатами.
-select employees.employee_name, salary.monthly_salary 
+--1.  Вывести всех работников чьи зарплаты есть в базе, вместе с зарплатами (увеличенную в 2 раза)
+select employees.employee_name, salary.monthly_salary*2 as salary_year 
 from employees join employee_salary 
 on employee_salary.employee_id = employees.id
 join salary 

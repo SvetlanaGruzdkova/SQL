@@ -95,8 +95,8 @@ join roles
 on roles_employee.role_id = roles.id
 where role_name like '%Junior%';
 
--- 13. Вывести имена и зарплаты Middle специалистов
-select employees.employee_name, salary.monthly_salary, roles.role_name 
+-- 13. Вывести имена и зарплаты Middle специалистов (в общем столбце)
+select concat(employees.employee_name,', ',roles.role_name,', ',salary.monthly_salary) 
 from employees join employee_salary
 on employees.id = employee_salary.employee_id 
 join salary 
